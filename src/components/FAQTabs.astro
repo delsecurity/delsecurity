@@ -6,10 +6,10 @@ interface FAQItem {
 
 interface Props {
   researcher: FAQItem[];
-  vendor: FAQItem[];
+  partner: FAQItem[];
 }
 
-const { researcher, vendor } = Astro.props;
+const { researcher, partner } = Astro.props;
 ---
 
 <section class="card p-6" aria-label="Frequently asked questions">
@@ -25,10 +25,10 @@ const { researcher, vendor } = Astro.props;
     <button
       class="faq-tab rounded-full px-4 py-1.5 text-sm font-medium"
       type="button"
-      data-tab="vendor"
+      data-tab="partner"
       aria-selected="false"
     >
-      Vendor FAQ
+      Business / Partner FAQ
     </button>
   </div>
 
@@ -41,8 +41,8 @@ const { researcher, vendor } = Astro.props;
     ))}
   </div>
 
-  <div class="faq-panel mt-5 hidden space-y-3" data-panel="vendor">
-    {vendor.map((item) => (
+  <div class="faq-panel mt-5 hidden space-y-3" data-panel="partner">
+    {partner.map((item) => (
       <details class="rounded-xl border border-line bg-bg p-4">
         <summary class="cursor-pointer font-medium text-text">{item.q}</summary>
         <p class="mt-2 text-sm text-text-soft">{item.a}</p>

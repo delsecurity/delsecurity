@@ -11,7 +11,7 @@ export async function GET(context: { site: URL }) {
 
   return rss({
     title: `${SITE.name} Blog`,
-    description: 'Security research, coordination operations, and vendor-ready reporting notes.',
+    description: 'Security research, coordination operations, and business/partner-ready reporting notes.',
     site,
     items: posts.map((post) => ({
       title: post.data.title,

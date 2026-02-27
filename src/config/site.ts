@@ -9,6 +9,7 @@ export const CONTACT = {
   infoEmail: 'contact@del-sec.com',
   securityEmail: 'contact@del-sec.com',
   pgpPath: '/pgp.txt',
+  xUrl: 'https://x.com/del_security',
 };
 
 export const NAV_ITEMS = [
@@ -32,7 +33,7 @@ export const SERVICE_CARDS = [
   {
     name: 'Vulnerability Research',
     summary:
-      'Targeted security research with clear scope boundaries, reproducible findings, and vendor-ready reporting.',
+      'Targeted security research with clear scope boundaries, reproducible findings, and business/partner-ready reporting.',
   },
   {
     name: 'Exploit Development',
@@ -70,7 +71,7 @@ export const PROCESS_STEPS = [
   {
     title: 'Delivery',
     icon: '05',
-    description: 'Vendor-ready report delivery, briefings, and remediation guidance.',
+    description: 'Business/partner-ready report delivery, briefings, and remediation guidance.',
   },
   {
     title: 'Retest & close',

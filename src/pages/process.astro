@@ -17,20 +17,20 @@ const businessFlow = [
   'Scoping & legal check: Align scope, authorization, and contract terms.',
   'Execution: Research and testing proceed within agreed boundaries.',
   'Validation: Stability and impact findings are confirmed.',
-  'Delivery: Vendor-ready report and remediation guidance are provided.',
+  'Delivery: Business/partner-ready report and remediation guidance are provided.',
   'Retest & close: Patch verification and closure notes are completed.',
 ];
 ---
 
 <BaseLayout
   title="Process"
-  description="Two clear workflows for researchers and business/vendor stakeholders, built on a shared six-step process."
+  description="Two clear workflows for researchers and business/partner stakeholders, built on a shared six-step process."
   canonicalPath="/process"
 >
   <section class="max-w-4xl">
     <h1 class="font-display text-4xl font-bold">Process</h1>
     <p class="mt-4 text-base leading-7 text-text-soft">
-      We use one shared six-step model, then communicate it in two tracks: researcher-facing and business/vendor-facing.
+      We use one shared six-step model, then communicate it in two tracks: researcher-facing and business/partner-facing.
       This keeps expectations clear for both reporting and remediation teams.
     </p>
   </section>
@@ -46,9 +46,9 @@ const businessFlow = [
       </ol>
     </article>
     <article class="card p-6">
-      <h2 class="font-display text-2xl font-semibold">Business & vendor workflow</h2>
+      <h2 class="font-display text-2xl font-semibold">Business & partner workflow</h2>
       <p class="mt-2 text-sm text-text-soft">
-        For clients, product security teams, and legitimate vendor contacts coordinating remediation.
+        For clients, product security teams, and legitimate partner contacts coordinating remediation.
       </p>
       <ol class="mt-4 list-decimal space-y-2 pl-5 text-sm text-text-soft">
         {businessFlow.map((item) => <li>{item}</li>)}
@@ -85,7 +85,7 @@ const businessFlow = [
         </ul>
       </div>
       <div class="rounded-xl bg-bg p-4">
-        <h3 class="font-display text-lg font-semibold">Business/vendor-facing</h3>
+        <h3 class="font-display text-lg font-semibold">Business/partner-facing</h3>
         <ul class="mt-2 list-disc space-y-2 pl-5 text-sm text-text-soft">
           <li>Scope and legal alignment typically completed in 2-5 business days.</li>
           <li>Report delivery timing varies by target complexity and validation depth.</li>

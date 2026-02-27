@@ -20,14 +20,14 @@ const researcherFaq = [
   },
 ];
 
-const vendorFaq = [
+const partnerFaq = [
   {
-    q: 'What does a vendor-ready report include?',
+    q: 'What does a business/partner-ready report include?',
     a: 'Reproduction workflow, impact framing, affected versions, mitigation options, and evidence from a controlled validation environment.',
   },
   {
     q: 'Can timeline and embargo be coordinated?',
-    a: 'Yes. We coordinate responsible disclosure timelines with legitimate vendors and can align on embargo windows when appropriate.',
+    a: 'Yes. We coordinate responsible disclosure timelines with legitimate partners and product teams, including embargo windows when appropriate.',
   },
   {
     q: 'Do you offer retest support?',
@@ -48,7 +48,7 @@ const vendorFaq = [
         Vulnerability research is our primary service.
       </h1>
       <p class="mt-5 max-w-2xl text-base leading-7 text-text-soft">
-        Del Security focuses on high-signal vulnerability research with reproducible validation. We also operate a private submission and evaluation program for researchers and support vendor coordination when needed.
+        Del Security focuses on high-signal vulnerability research with reproducible validation. We also operate a private submission and evaluation program for researchers and support business and partner coordination when needed.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a class="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white" href={withBase('/submissions')}>Submit a vulnerability</a>
@@ -60,10 +60,10 @@ const vendorFaq = [
       <span class="inline-flex w-fit rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand">Legal</span>
       <span class="inline-flex w-fit rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand">Fast</span>
       <span class="inline-flex w-fit rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand">Discreet</span>
-      <span class="inline-flex w-fit rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand">Vendor-ready</span>
+      <span class="inline-flex w-fit rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand">Partner-ready</span>
       <div class="card mt-2 p-4">
         <p class="text-sm text-text-soft">
-          We coordinate responsible disclosure with legitimate vendors/partners and decline unauthorized or malicious requests.
+          We coordinate responsible disclosure with legitimate business and partner stakeholders, and decline unauthorized or malicious requests.
         </p>
       </div>
     </div>
@@ -82,12 +82,12 @@ const vendorFaq = [
       </ul>
     </article>
     <article class="card p-6">
-      <h2 class="font-display text-2xl font-semibold">For Vendors</h2>
+      <h2 class="font-display text-2xl font-semibold">For Business / Partners</h2>
       <p class="mt-3 text-sm leading-7 text-text-soft">
         Structured reports designed for engineering action: reproducibility, impact context, mitigation guidance, and practical validation details.
       </p>
       <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-text-soft">
-        <li>Vendor communication channel with timeline coordination.</li>
+        <li>Business/partner communication channel with timeline coordination.</li>
         <li>Embargo options and retest support.</li>
         <li>Clear technical artifacts for internal patch workflows.</li>
       </ul>
@@ -118,13 +118,13 @@ const vendorFaq = [
       <p class="rounded-xl bg-bg p-4 text-sm text-text-soft">NDA-first onboarding and least-privilege access for sensitive engagements.</p>
       <p class="rounded-xl bg-bg p-4 text-sm text-text-soft">KYC and provenance checks with compliance screening aligned to sanctions and export-control considerations.</p>
       <p class="rounded-xl bg-bg p-4 text-sm text-text-soft">Data retention and deletion windows are configurable and handled case-by-case by engagement requirements.</p>
-      <p class="rounded-xl bg-bg p-4 text-sm text-text-soft">Responsible disclosure coordination with vendor timeline and embargo alignment options.</p>
+      <p class="rounded-xl bg-bg p-4 text-sm text-text-soft">Responsible disclosure coordination with business/partner timelines and embargo alignment options.</p>
     </div>
     <a class="mt-5 inline-flex text-sm font-semibold text-brand" href={withBase('/trust')}>Read Trust & Compliance</a>
   </section>
 
   <section class="mt-16">
     <h2 class="mb-6 font-display text-3xl font-semibold">FAQ</h2>
-    <FAQTabs researcher={researcherFaq} vendor={vendorFaq} />
+    <FAQTabs researcher={researcherFaq} partner={partnerFaq} />
   </section>
 </BaseLayout>
