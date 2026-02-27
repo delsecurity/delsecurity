@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, withBase } from '../config/site';
+---
+
+<BaseLayout
+  title="Trust & Compliance"
+  description="Legal and ethical operating principles, confidentiality controls, and structured coordination practices."
+  canonicalPath="/trust"
+>
+  <section class="max-w-4xl">
+    <h1 class="font-display text-4xl font-bold">Trust & Compliance</h1>
+    <p class="mt-4 text-base leading-7 text-text-soft">
+      Del Security operates with legal authorization, confidentiality safeguards, and responsible coordination practices.
+    </p>
+  </section>
+
+  <section class="mt-10 space-y-5">
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Legal & ethical commitment</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        We support lawful security collaboration only. We decline work involving unauthorized intrusion, abusive exploitation, stolen data, or requests that conflict with legal and ethical standards.
+      </p>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Vetting (KYC) & engagement rules</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        Engagements require defined authorization, permissioned scope, and purpose limitation. KYC and provenance checks may be applied before active work. Testing safeguards are set to limit operational risk.
+      </p>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Confidentiality</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        NDA-first onboarding is available. Access is restricted by least-privilege principles with controlled participant lists and need-to-know communication channels.
+      </p>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Data handling</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        Retention and deletion windows are configurable and case-by-case. Data is handled according to engagement requirements, sensitivity, and applicable compliance constraints.
+      </p>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Coordination principles</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        We coordinate with legitimate stakeholders and support timeline or embargo alignment where appropriate.
+      </p>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Security contact</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        Contact us at <a class="text-brand underline" href={`mailto:${CONTACT.securityEmail}`}>{CONTACT.securityEmail}</a>.
+        For sensitive material, use our <a class="text-brand underline" href={withBase('/pgp.txt')}>PGP public key</a>.
+      </p>
+    </article>
+  </section>
+</BaseLayout>

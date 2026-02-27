@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  {
+    id: 'research',
+    title: 'Vulnerability Research',
+    what:
+      'Focused security research designed to identify and verify vulnerabilities in agreed targets under authorized scope and documented legal terms.',
+    scope: [
+      'Web application and API security assessment',
+      'Authentication, authorization, and session control analysis',
+      'Business logic abuse and privilege boundary testing',
+      'Version-specific regression checks',
+      'Evidence collection for reproducibility',
+    ],
+    deliverables: [
+      'Structured report with executive summary and technical deep dive',
+      'Reproduction steps with environment assumptions and prerequisites',
+      'PoC policy: minimal-impact, non-destructive demonstrations only',
+      'Retest package after remediation',
+    ],
+    timeline:
+      'Milestones are defined at kickoff with weekly updates by default. Urgent coordination can be arranged through secure channels when incident timelines require it.',
+  },
+  {
+    id: 'exploit',
+    title: 'Exploit Development (Validation & controlled testing only)',
+    what:
+      'Technical exploit development to validate severity claims and improve reproducibility, performed only in controlled environments for legitimate security testing outcomes.',
+    scope: [
+      'Controlled lab reproduction of reported vulnerability conditions',
+      'Stability checks across affected versions',
+      'Impact confirmation for defensive prioritization',
+      'Crash behavior and safeguard boundary documentation',
+      'Mitigation-focused validation notes',
+    ],
+    deliverables: [
+      'Validation-oriented report with reproducibility notes',
+      'PoC policy: controlled, non-operational payloads for defensive analysis only',
+      'Step-by-step execution notes for authorized teams',
+      'Retest guidance against patched builds',
+    ],
+    timeline:
+      'Validation milestones are shared early, then updated weekly or at each major checkpoint. Communication remains scoped to approved channels and approved participants.',
+  },
+  {
+    id: 'submission-program',
+    title: 'Vulnerability Submission & Evaluation Program',
+    what:
+      'A private intake and evaluation channel for researcher submissions, with triage, technical validation, and structured coordination with legitimate stakeholders.',
+    scope: [
+      'Submission intake with quality and scope screening',
+      'Technical triage for reproducibility and impact',
+      'Vendor-ready reporting package preparation',
+      'Coordination and timeline alignment options',
+      'Case-by-case compensation review where applicable',
+    ],
+    deliverables: [
+      'Evaluation memo with triage rationale and technical findings',
+      'Vendor-ready report with reproducible workflow and impact framing',
+      'PoC policy: no weaponization, no unauthorized deployment',
+      'Retest and closure notes when remediation is complete',
+    ],
+    timeline:
+      'Triage checkpoints are communicated transparently, with typical weekly updates during active evaluation and additional updates when status changes materially.',
+  },
+];
+---
+
+<BaseLayout
+  title="Services"
+  description="Vulnerability research, controlled exploit validation, and private submission evaluation workflows."
+  canonicalPath="/services"
+>
+  <section class="max-w-4xl">
+    <h1 class="font-display text-4xl font-bold">Services</h1>
+    <p class="mt-4 text-base leading-7 text-text-soft">
+      Del Security provides researcher-first vulnerability workflows with legal alignment, transparent milestones, and discreet communication.
+    </p>
+  </section>
+
+  <section class="mt-12 space-y-8">
+    {services.map((service) => (
+      <article id={service.id} class="card p-6 md:p-8">
+        <h2 class="font-display text-3xl font-semibold">{service.title}</h2>
+
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
+          <section>
+            <h3 class="font-display text-xl font-semibold">What it is</h3>
+            <p class="mt-3 text-sm leading-7 text-text-soft">{service.what}</p>
+          </section>
+          <section>
+            <h3 class="font-display text-xl font-semibold">Typical scope</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-text-soft">
+              {service.scope.map((item) => <li>{item}</li>)}
+            </ul>
+          </section>
+          <section>
+            <h3 class="font-display text-xl font-semibold">Deliverables</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-text-soft">
+              {service.deliverables.map((item) => <li>{item}</li>)}
+            </ul>
+          </section>
+          <section>
+            <h3 class="font-display text-xl font-semibold">Timeline & communication</h3>
+            <p class="mt-3 text-sm leading-7 text-text-soft">{service.timeline}</p>
+          </section>
+        </div>
+
+        <section class="mt-8 rounded-2xl border border-line bg-bg p-5">
+          <h3 class="font-display text-xl font-semibold">Engagement requirements</h3>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-text-soft">
+            <li>Permissioned scope and legitimate purpose are mandatory before execution.</li>
+            <li>Work is performed under contract terms such as NDA, MSA, and/or SOW.</li>
+            <li>KYC and provenance screening may be required before engagement acceptance.</li>
+            <li>Compliance checks include sanctions, export-control, and applicable regulatory screening.</li>
+          </ul>
+        </section>
+      </article>
+    ))}
+  </section>
+
+  <section class="mt-12 card p-6">
+    <h2 class="font-display text-2xl font-semibold">Program policy statements</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-text-soft">
+      <li>We operate a private submission and evaluation program.</li>
+      <li>We coordinate with legitimate stakeholders under authorized and lawful terms.</li>
+      <li>Requests involving illegal access, unauthorized intrusion, stolen data, or abusive intent are declined.</li>
+      <li>Engagements proceed only with approved scope, lawful purpose, and contractual terms.</li>
+    </ul>
+  </section>
+</BaseLayout>

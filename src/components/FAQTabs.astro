@@ -1,0 +1,75 @@
+---
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  researcher: FAQItem[];
+  vendor: FAQItem[];
+}
+
+const { researcher, vendor } = Astro.props;
+---
+
+<section class="card p-6" aria-label="Frequently asked questions">
+  <div class="inline-flex rounded-full border border-line bg-muted p-1">
+    <button
+      class="faq-tab rounded-full px-4 py-1.5 text-sm font-medium"
+      type="button"
+      data-tab="researcher"
+      aria-selected="true"
+    >
+      Researcher FAQ
+    </button>
+    <button
+      class="faq-tab rounded-full px-4 py-1.5 text-sm font-medium"
+      type="button"
+      data-tab="vendor"
+      aria-selected="false"
+    >
+      Vendor FAQ
+    </button>
+  </div>
+
+  <div class="faq-panel mt-5 space-y-3" data-panel="researcher">
+    {researcher.map((item) => (
+      <details class="rounded-xl border border-line bg-bg p-4">
+        <summary class="cursor-pointer font-medium text-text">{item.q}</summary>
+        <p class="mt-2 text-sm text-text-soft">{item.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <div class="faq-panel mt-5 hidden space-y-3" data-panel="vendor">
+    {vendor.map((item) => (
+      <details class="rounded-xl border border-line bg-bg p-4">
+        <summary class="cursor-pointer font-medium text-text">{item.q}</summary>
+        <p class="mt-2 text-sm text-text-soft">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<script is:inline>
+  const tabs = document.querySelectorAll('.faq-tab');
+  const panels = document.querySelectorAll('.faq-panel');
+
+  const setActive = (target) => {
+    tabs.forEach((tab) => {
+      const active = tab.dataset.tab === target;
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      tab.classList.toggle('bg-surface', active);
+      tab.classList.toggle('text-text', active);
+      tab.classList.toggle('text-text-soft', !active);
+      tab.classList.toggle('shadow-sm', active);
+    });
+
+    panels.forEach((panel) => {
+      panel.classList.toggle('hidden', panel.dataset.panel !== target);
+    });
+  };
+
+  setActive('researcher');
+  tabs.forEach((tab) => tab.addEventListener('click', () => setActive(tab.dataset.tab)));
+</script>

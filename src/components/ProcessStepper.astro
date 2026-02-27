@@ -1,0 +1,15 @@
+---
+import { PROCESS_STEPS } from '../config/site';
+---
+
+<ol class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+  {PROCESS_STEPS.map((step) => (
+    <li class="card p-5">
+      <div class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft font-display text-sm font-semibold text-brand">
+        {step.icon}
+      </div>
+      <h3 class="mt-4 font-display text-lg font-semibold text-text">{step.title}</h3>
+      <p class="mt-2 text-sm text-text-soft">{step.description}</p>
+    </li>
+  ))}
+</ol>

@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, withBase } from '../config/site';
+---
+
+<BaseLayout
+  title="Submissions"
+  description="Researcher submission guidelines, acceptance criteria, and evaluation flow for Del Security's private program."
+  canonicalPath="/submissions"
+>
+  <section class="max-w-4xl">
+    <h1 class="font-display text-4xl font-bold">Researcher Submissions</h1>
+    <p class="mt-4 text-base leading-7 text-text-soft">
+      We operate a private submission and evaluation program. Submissions are reviewed for reproducibility, impact, and responsible coordination readiness.
+    </p>
+  </section>
+
+  <section class="mt-10 grid gap-5">
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">How to submit</h2>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-text-soft">
+        <li>Target and affected version details</li>
+        <li>Minimum reproduction checklist with exact steps</li>
+        <li>Environment assumptions and prerequisites</li>
+        <li>Observed impact and security relevance</li>
+        <li>Evidence artifacts: logs, screenshots, trace output, or PoC notes</li>
+      </ul>
+      <p class="mt-4 text-sm text-text-soft">
+        Submit via <a class="text-brand underline" href={`mailto:${CONTACT.securityEmail}`}>{CONTACT.securityEmail}</a>. For sensitive content, encrypt using the <a class="text-brand underline" href={withBase('/pgp.txt')}>PGP public key</a>.
+      </p>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">What we accept / don&apos;t accept</h2>
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <div class="rounded-xl bg-bg p-4">
+          <h3 class="font-display text-lg font-semibold">We accept</h3>
+          <ul class="mt-2 list-disc space-y-1.5 pl-5 text-sm text-text-soft">
+            <li>Authorized and lawful research context</li>
+            <li>Technically reproducible findings</li>
+            <li>Clear impact articulation and affected scope</li>
+            <li>Good-faith coordination intent</li>
+          </ul>
+        </div>
+        <div class="rounded-xl bg-bg p-4">
+          <h3 class="font-display text-lg font-semibold">We decline</h3>
+          <ul class="mt-2 list-disc space-y-1.5 pl-5 text-sm text-text-soft">
+            <li>Unauthorized access or intrusive activity requests</li>
+            <li>Stolen data submissions or provenance gaps</li>
+            <li>Low-quality claims without reproducible evidence</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article id="spec-sheet" class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Submission spec sheet format</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        Use this structure to improve triage speed and reproducibility. Plain text or Markdown is preferred.
+      </p>
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-bg p-4 text-xs leading-6 text-text-soft"><code>Title:
+Vulnerability class:
+Target / product:
+Affected versions:
+Tested environment:
+Prerequisites:
+Reproduction steps:
+Expected result:
+Observed result:
+Impact summary:
+Artifacts (logs/screenshots/PoC):
+Researcher contact:
+</code></pre>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Evaluation flow</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        Triage -&gt; validation -&gt; vendor-ready report -&gt; coordination. We provide status milestones throughout active review.
+      </p>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Compensation</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        Compensation decisions are case-by-case. No fixed amounts are guaranteed. Typical factors include impact, novelty, reproducibility, and affected versions.
+      </p>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">Discreet submissions</h2>
+      <p class="mt-3 text-sm leading-7 text-text-soft">
+        We can receive discreet submissions and maintain confidential communication channels when sensitive coordination is required.
+      </p>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="font-display text-2xl font-semibold">PGP quick guide</h2>
+      <ol class="mt-3 list-decimal space-y-2 pl-5 text-sm text-text-soft">
+        <li>Download our public key from <a class="text-brand underline" href={withBase('/pgp.txt')}>/pgp.txt</a>.</li>
+        <li>Encrypt your submission package and include your contact details.</li>
+        <li>Send encrypted content to <a class="text-brand underline" href={`mailto:${CONTACT.securityEmail}`}>{CONTACT.securityEmail}</a>.</li>
+      </ol>
+    </article>
+  </section>
+</BaseLayout>

@@ -1,0 +1,33 @@
+<button
+  type="button"
+  id="theme-toggle"
+  class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium text-text-soft transition hover:border-brand hover:text-text"
+  aria-label="Toggle color theme"
+>
+  <span aria-hidden="true">Theme</span>
+  <span id="theme-state" class="font-semibold text-text">Light</span>
+</button>
+
+<script is:inline>
+  const root = document.documentElement;
+  const button = document.getElementById('theme-toggle');
+  const state = document.getElementById('theme-state');
+
+  const getTheme = () => {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'light' || stored === 'dark') return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  };
+
+  const applyTheme = (theme) => {
+    root.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    if (state) state.textContent = theme === 'dark' ? 'Dark' : 'Light';
+  };
+
+  applyTheme(getTheme());
+
+  button?.addEventListener('click', () => {
+    applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+</script>
