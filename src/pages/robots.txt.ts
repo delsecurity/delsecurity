@@ -1,7 +1,10 @@
+import { withBase } from '../config/site';
+
 export function GET() {
-  const rawBase = import.meta.env.BASE_URL;
-  const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
-  const sitemapUrl = `${base}sitemap-index.xml`;
+  const sitemapPath = withBase('/sitemap-index.xml');
+  const sitemapUrl = import.meta.env.SITE
+    ? new URL(sitemapPath, import.meta.env.SITE).toString()
+    : sitemapPath;
 
   const body = `User-agent: *\nAllow: /\n\nSitemap: ${sitemapUrl}\n`;
 

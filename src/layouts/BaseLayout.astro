@@ -12,11 +12,12 @@ interface Props {
 }
 
 const { title, description = SITE.description, canonicalPath, noindex = false } = Astro.props;
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 const canonical = canonicalPath && import.meta.env.SITE
   ? new URL(withBase(canonicalPath), import.meta.env.SITE).toString()
   : undefined;
 const ogImage = import.meta.env.SITE
-  ? new URL(withBase('/og-placeholder.svg'), import.meta.env.SITE).toString()
+  ? new URL(withBase('/brand/del_security_lockup_transparent_black.png'), import.meta.env.SITE).toString()
   : undefined;
 ---
 
@@ -38,6 +39,8 @@ const ogImage = import.meta.env.SITE
     {canonical && <meta property="og:url" content={canonical} />}
     {ogImage && <meta property="og:image" content={ogImage} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7fb" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f1114" />
     <link rel="alternate" type="application/rss+xml" title={`${SITE.name} Blog RSS`} href={withBase('/rss.xml')} />
 
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
@@ -52,13 +55,17 @@ const ogImage = import.meta.env.SITE
       })();
     </script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C4VM0D063Y"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-C4VM0D063Y');
-    </script>
+    {
+      ga4Id && (
+        <>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+          <script
+            is:inline
+            define:vars={{ ga4Id }}
+          >{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ga4Id);`}</script>
+        </>
+      )
+    }
   </head>
   <body>
     <Header />

@@ -7,7 +7,8 @@ export function sortPostsByDate(posts: CollectionEntry<'blog'>[]) {
   );
 }
 
-export function getReadingTimeText(body: string) {
+export function getReadingTimeText(body?: string | null) {
+  if (!body) return '1 min read';
   return readingTime(body).text;
 }
 
@@ -16,5 +17,5 @@ export function isPublished(draft: boolean) {
 }
 
 export function getPostSlug(post: CollectionEntry<'blog'>) {
-  return post.id.replace(/\.mdx?$/, '');
+  return post.slug ?? post.id.replace(/\.mdx?$/, '');
 }

@@ -1,20 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { getPostSlug, getReadingTimeText, isPublished, sortPostsByDate } from '../../utils/blog';
 import { SITE, withBase } from '../../config/site';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => isPublished(data.draft));
+  const posts = sortPostsByDate(await getCollection('blog', ({ data }) => isPublished(data.draft)));
   return posts.map((post) => ({
     params: { slug: getPostSlug(post) },
-    props: { post },
+    props: { post, allPosts: posts },
   }));
 }
 
-const { post } = Astro.props;
+interface Props {
+  post: CollectionEntry<'blog'>;
+  allPosts: CollectionEntry<'blog'>[];
+}
+
+const { post, allPosts } = Astro.props as Props;
 const { Content } = await render(post);
-const allPosts = sortPostsByDate(await getCollection('blog', ({ data }) => isPublished(data.draft)));
 const currentIndex = allPosts.findIndex((item) => item.id === post.id);
 const previousPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;

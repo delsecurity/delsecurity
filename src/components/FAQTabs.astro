@@ -10,15 +10,24 @@ interface Props {
 }
 
 const { researcher, partner } = Astro.props;
+const componentId = `faq-${Math.random().toString(36).slice(2, 9)}`;
+const researcherTabId = `${componentId}-tab-researcher`;
+const partnerTabId = `${componentId}-tab-partner`;
+const researcherPanelId = `${componentId}-panel-researcher`;
+const partnerPanelId = `${componentId}-panel-partner`;
 ---
 
-<section class="card p-6" aria-label="Frequently asked questions">
-  <div class="inline-flex rounded-full border border-line bg-muted p-1">
+<section class="card p-6" aria-label="Frequently asked questions" data-faq-root={componentId}>
+  <div class="inline-flex rounded-full border border-line bg-muted p-1" role="tablist" aria-label="FAQ categories">
     <button
       class="faq-tab rounded-full px-4 py-1.5 text-sm font-medium"
       type="button"
       data-tab="researcher"
+      id={researcherTabId}
+      role="tab"
+      aria-controls={researcherPanelId}
       aria-selected="true"
+      tabindex="0"
     >
       Researcher FAQ
     </button>
@@ -26,13 +35,23 @@ const { researcher, partner } = Astro.props;
       class="faq-tab rounded-full px-4 py-1.5 text-sm font-medium"
       type="button"
       data-tab="partner"
+      id={partnerTabId}
+      role="tab"
+      aria-controls={partnerPanelId}
       aria-selected="false"
+      tabindex="-1"
     >
       Business / Partner FAQ
     </button>
   </div>
 
-  <div class="faq-panel mt-5 space-y-3" data-panel="researcher">
+  <div
+    class="faq-panel mt-5 space-y-3"
+    data-panel="researcher"
+    id={researcherPanelId}
+    role="tabpanel"
+    aria-labelledby={researcherTabId}
+  >
     {researcher.map((item) => (
       <details class="rounded-xl border border-line bg-bg p-4">
         <summary class="cursor-pointer font-medium text-text">{item.q}</summary>
@@ -41,7 +60,14 @@ const { researcher, partner } = Astro.props;
     ))}
   </div>
 
-  <div class="faq-panel mt-5 hidden space-y-3" data-panel="partner">
+  <div
+    class="faq-panel mt-5 hidden space-y-3"
+    data-panel="partner"
+    id={partnerPanelId}
+    role="tabpanel"
+    aria-labelledby={partnerTabId}
+    hidden
+  >
     {partner.map((item) => (
       <details class="rounded-xl border border-line bg-bg p-4">
         <summary class="cursor-pointer font-medium text-text">{item.q}</summary>
@@ -52,24 +78,52 @@ const { researcher, partner } = Astro.props;
 </section>
 
 <script is:inline>
-  const tabs = document.querySelectorAll('.faq-tab');
-  const panels = document.querySelectorAll('.faq-panel');
+  const roots = document.querySelectorAll('[data-faq-root]');
 
-  const setActive = (target) => {
-    tabs.forEach((tab) => {
-      const active = tab.dataset.tab === target;
-      tab.setAttribute('aria-selected', active ? 'true' : 'false');
-      tab.classList.toggle('bg-surface', active);
-      tab.classList.toggle('text-text', active);
-      tab.classList.toggle('text-text-soft', !active);
-      tab.classList.toggle('shadow-sm', active);
+  roots.forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll('.faq-tab'));
+    const panels = Array.from(root.querySelectorAll('.faq-panel'));
+    if (tabs.length === 0 || panels.length === 0) return;
+
+    const setActive = (target, focusTab = false) => {
+      tabs.forEach((tab) => {
+        const active = tab.dataset.tab === target;
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.setAttribute('tabindex', active ? '0' : '-1');
+        tab.classList.toggle('bg-surface', active);
+        tab.classList.toggle('text-text', active);
+        tab.classList.toggle('text-text-soft', !active);
+        tab.classList.toggle('shadow-sm', active);
+        if (focusTab && active) tab.focus();
+      });
+
+      panels.forEach((panel) => {
+        const active = panel.dataset.panel === target;
+        panel.classList.toggle('hidden', !active);
+        panel.hidden = !active;
+      });
+    };
+
+    setActive('researcher');
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => setActive(tab.dataset.tab));
+      tab.addEventListener('keydown', (event) => {
+        const key = event.key;
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) return;
+        event.preventDefault();
+
+        let nextIndex = index;
+        if (key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+        if (key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        if (key === 'Home') nextIndex = 0;
+        if (key === 'End') nextIndex = tabs.length - 1;
+
+        const nextTab = tabs[nextIndex];
+        if (nextTab?.dataset.tab) {
+          setActive(nextTab.dataset.tab, true);
+        }
+      });
     });
-
-    panels.forEach((panel) => {
-      panel.classList.toggle('hidden', panel.dataset.panel !== target);
-    });
-  };
-
-  setActive('researcher');
-  tabs.forEach((tab) => tab.addEventListener('click', () => setActive(tab.dataset.tab)));
+  });
 </script>

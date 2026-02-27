@@ -5,13 +5,14 @@
   aria-label="Toggle color theme"
 >
   <span aria-hidden="true">Theme</span>
-  <span id="theme-state" class="font-semibold text-text">Light</span>
+  <span id="theme-state" class="font-semibold text-text"></span>
 </button>
 
 <script is:inline>
   const root = document.documentElement;
   const button = document.getElementById('theme-toggle');
   const state = document.getElementById('theme-state');
+  if (state) state.textContent = root.dataset.theme === 'dark' ? 'Dark' : 'Light';
 
   const getTheme = () => {
     const stored = localStorage.getItem('theme');
