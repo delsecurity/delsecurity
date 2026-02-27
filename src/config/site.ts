@@ -33,7 +33,7 @@ export const SERVICE_CARDS = [
   {
     name: 'Vulnerability Research',
     summary:
-      'Targeted security research with clear scope boundaries, reproducible findings, and business/partner-ready reporting.',
+      'Targeted security research with clear scope boundaries, reproducible findings, and stakeholder-ready reporting.',
   },
   {
     name: 'Exploit Development',
@@ -71,7 +71,7 @@ export const PROCESS_STEPS = [
   {
     title: 'Delivery',
     icon: '05',
-    description: 'Business/partner-ready report delivery, briefings, and remediation guidance.',
+    description: 'Stakeholder-ready report delivery, briefings, and remediation guidance.',
   },
   {
     title: 'Retest & close',

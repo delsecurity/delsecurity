@@ -2,71 +2,70 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { PROCESS_STEPS } from '../config/site';
 
-const researcherFlow = [
-  'Intake: Submit context, affected versions, and reproducible evidence.',
-  'Scoping & legal check: Confirm lawful scope and authorized research intent.',
-  'Contract alignment: NDA/MSA/SOW terms are confirmed when engagement requires formal handling.',
-  'Execution: Technical review and controlled validation begin.',
-  'Validation: Impact and reproducibility are verified.',
-  'Delivery: Triage status and outcome summary are shared.',
-  'Retest & close: Fix verification or closure rationale is documented.',
-];
-
-const businessFlow = [
-  'Intake: Define objective, assets, stakeholders, and secure channel.',
-  'Scoping & legal check: Align scope, authorization, and contract terms.',
-  'Execution: Research and testing proceed within agreed boundaries.',
-  'Validation: Stability and impact findings are confirmed.',
-  'Delivery: Business/partner-ready report and remediation guidance are provided.',
-  'Retest & close: Patch verification and closure notes are completed.',
+const stepDetails = [
+  {
+    researcher: 'Submit context, affected versions, and reproducible evidence.',
+    stakeholder: 'Define objective, assets, stakeholders, and secure channel.',
+  },
+  {
+    researcher: 'Confirm defined scope and research authorization.',
+    stakeholder: 'Align scope, authorization, and contract terms.',
+  },
+  {
+    researcher: 'Technical review and controlled validation begin.',
+    stakeholder: 'Research and testing proceed within agreed boundaries.',
+  },
+  {
+    researcher: 'Impact and reproducibility are verified.',
+    stakeholder: 'Stability and impact findings are confirmed.',
+  },
+  {
+    researcher: 'Triage status and outcome summary are shared.',
+    stakeholder: 'Stakeholder-ready report and remediation guidance are provided.',
+  },
+  {
+    researcher: 'Fix verification or closure rationale is documented.',
+    stakeholder: 'Patch verification and closure notes are completed.',
+  },
 ];
 ---
 
 <BaseLayout
   title="Process"
-  description="Two clear workflows for researchers and business/partner stakeholders, built on a shared six-step process."
+  description="A shared six-step engagement model with researcher and stakeholder perspectives at each stage."
   canonicalPath="/process"
 >
   <section class="max-w-4xl">
     <h1 class="font-display text-4xl font-bold">Process</h1>
     <p class="mt-4 text-base leading-7 text-text-soft">
-      We use one shared six-step model, then communicate it in two tracks: researcher-facing and business/partner-facing.
-      This keeps expectations clear for both reporting and remediation teams.
+      We use one shared six-step model that applies to both researcher submissions and stakeholder engagements.
+      Each step is adapted to the participant's perspective while keeping the overall workflow consistent.
     </p>
   </section>
 
-  <section class="mt-10 grid gap-5 md:grid-cols-2">
-    <article class="card p-6">
-      <h2 class="font-display text-2xl font-semibold">Researcher workflow</h2>
-      <p class="mt-2 text-sm text-text-soft">
-        For independent researchers submitting findings for triage and evaluation.
-      </p>
-      <ol class="mt-4 list-decimal space-y-2 pl-5 text-sm text-text-soft">
-        {researcherFlow.map((item) => <li>{item}</li>)}
-      </ol>
-    </article>
-    <article class="card p-6">
-      <h2 class="font-display text-2xl font-semibold">Business & partner workflow</h2>
-      <p class="mt-2 text-sm text-text-soft">
-        For clients, product security teams, and legitimate partner contacts coordinating remediation.
-      </p>
-      <ol class="mt-4 list-decimal space-y-2 pl-5 text-sm text-text-soft">
-        {businessFlow.map((item) => <li>{item}</li>)}
-      </ol>
-    </article>
-  </section>
-
   <section class="mt-10">
-    <h2 class="mb-4 font-display text-2xl font-semibold">Shared six-step model</h2>
+    <h2 class="mb-4 font-display text-2xl font-semibold">Six-step engagement model</h2>
     <ol class="space-y-4">
-      {PROCESS_STEPS.map((step) => (
-        <li class="card grid gap-4 p-5 md:grid-cols-[64px_1fr] md:items-center">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-soft font-display text-base font-semibold text-brand">
-            {step.icon}
-          </div>
-          <div>
-            <h3 class="font-display text-2xl font-semibold text-text">{step.title}</h3>
-            <p class="mt-2 text-sm text-text-soft">{step.description}</p>
+      {PROCESS_STEPS.map((step, i) => (
+        <li class="card p-5">
+          <div class="grid gap-4 md:grid-cols-[64px_1fr] md:items-start">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-soft font-display text-base font-semibold text-brand">
+              {step.icon}
+            </div>
+            <div>
+              <h3 class="font-display text-2xl font-semibold text-text">{step.title}</h3>
+              <p class="mt-2 text-sm text-text-soft">{step.description}</p>
+              <div class="mt-3 grid gap-3 md:grid-cols-2">
+                <div class="rounded-xl bg-bg p-3">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-brand">Researcher</p>
+                  <p class="mt-1 text-sm text-text-soft">{stepDetails[i].researcher}</p>
+                </div>
+                <div class="rounded-xl bg-bg p-3">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-brand">Stakeholder</p>
+                  <p class="mt-1 text-sm text-text-soft">{stepDetails[i].stakeholder}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </li>
       ))}
@@ -85,9 +84,9 @@ const businessFlow = [
         </ul>
       </div>
       <div class="rounded-xl bg-bg p-4">
-        <h3 class="font-display text-lg font-semibold">Business/partner-facing</h3>
+        <h3 class="font-display text-lg font-semibold">Stakeholder-facing</h3>
         <ul class="mt-2 list-disc space-y-2 pl-5 text-sm text-text-soft">
-          <li>Scope and legal alignment typically completed in 2-5 business days.</li>
+          <li>Scope and authorization alignment typically completed in 2-5 business days.</li>
           <li>Report delivery timing varies by target complexity and validation depth.</li>
           <li>Retest is typically coordinated within 5-10 business days after remediation artifacts are provided.</li>
         </ul>
