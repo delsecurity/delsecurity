@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  {
+    id: 'framework',
+    title: 'Technical Framework Development',
+    what:
+      'Custom security frameworks, tooling, and methodologies engineered to fit your environment — from assessment automation to internal security workflow design.',
+    scope: [
+      'Custom security assessment frameworks and tooling',
+      'Purpose-built instrumentation for target-specific analysis',
+      'Documentation and knowledge transfer for internal teams',
+    ],
+    deliverables: [
+      'Production-ready framework or tooling package',
+      'Technical documentation with usage and deployment notes',
+    ],
+    timeline:
+      'Milestones are defined collaboratively at project kickoff. Progress is shared transparently with weekly updates and checkpoint reviews throughout development.',
+  },
+  {
+    id: 'research',
+    title: 'Vulnerability Research',
+    what:
+      'Discovery and analysis of 0-day and undisclosed vulnerabilities through in-depth security research, performed under defined scope with reproducible validation.',
+    scope: [
+      '0-day and undisclosed vulnerability discovery',
+      'Deep technical analysis of attack surfaces and exploit primitives',
+      'Version-specific impact assessment and regression analysis',
+      'Controlled proof-of-concept development and validation',
+      'Evidence collection for reproducibility and partner reporting',
+    ],
+    deliverables: [
+      'Structured report with executive summary and technical deep dive',
+      'Reproduction steps with environment assumptions and prerequisites',
+      'Retest package after remediation',
+    ],
+    timeline:
+      'Milestones are defined at kickoff with weekly updates by default. Urgent coordination can be arranged through secure channels when incident timelines require it.',
+  },
+  {
+    id: 'submission-program',
+    title: 'Vulnerability Submission & Evaluation Program',
+    what:
+      'A private intake and evaluation channel for researcher submissions, with triage, technical validation, and structured coordination with partners.',
+    scope: [
+      'Submission intake with quality and scope screening',
+      'Technical triage for reproducibility and impact',
+      'Partner-ready reporting package preparation',
+      'Coordination and timeline alignment options',
+      'Case-by-case compensation review where applicable',
+    ],
+    deliverables: [
+      'Evaluation memo with triage rationale and technical findings',
+      'Partner-ready report with reproducible workflow and impact framing',
+    ],
+    timeline:
+      'Triage checkpoints are communicated transparently, with typical weekly updates during active evaluation and additional updates when status changes materially.',
+  },
+];
+---
+
+<BaseLayout
+  title="Services"
+  description="Technical framework development, vulnerability research, and private submission evaluation — delivered with transparency, precision, and trust."
+  canonicalPath="/services"
+>
+  <section class="max-w-4xl">
+    <h1 class="font-display text-4xl font-bold">Services</h1>
+    <p class="mt-4 text-base leading-7 text-text-soft">
+      Del Security delivers technical framework development, vulnerability research, and a structured submission program — with full transparency, precise execution, and trusted partnership.
+    </p>
+  </section>
+
+  <section class="mt-12 space-y-8">
+    {services.map((service) => (
+      <article id={service.id} class="card p-6 md:p-8">
+        <h2 class="font-display text-3xl font-semibold">{service.title}</h2>
+
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
+          <section>
+            <h3 class="font-display text-xl font-semibold">What it is</h3>
+            <p class="mt-3 text-sm leading-7 text-text-soft">{service.what}</p>
+          </section>
+          <section>
+            <h3 class="font-display text-xl font-semibold">Typical scope</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-text-soft">
+              {service.scope.map((item) => <li>{item}</li>)}
+            </ul>
+          </section>
+          <section>
+            <h3 class="font-display text-xl font-semibold">Deliverables</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-text-soft">
+              {service.deliverables.map((item) => <li>{item}</li>)}
+            </ul>
+          </section>
+          <section>
+            <h3 class="font-display text-xl font-semibold">Timeline & communication</h3>
+            <p class="mt-3 text-sm leading-7 text-text-soft">{service.timeline}</p>
+          </section>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <section class="mt-8 card p-6 md:p-8">
+    <h2 class="font-display text-2xl font-semibold">Engagement requirements</h2>
+    <p class="mt-3 text-sm leading-7 text-text-soft">
+      The following requirements apply to all services listed above.
+    </p>
+    <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-text-soft">
+      <li>Defined scope and clear authorization are required before execution.</li>
+      <li>Work is performed under contract terms such as NDA, MSA, and/or SOW.</li>
+      <li>KYC and provenance screening may be required before engagement acceptance.</li>
+      <li>Compliance checks include sanctions, export-control, and applicable regulatory screening.</li>
+    </ul>
+  </section>
+
+  <section class="mt-8 card p-6">
+    <h2 class="font-display text-2xl font-semibold">Program policy</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-text-soft">
+      <li>We operate a private submission and evaluation program.</li>
+      <li>We coordinate with partners under responsible terms.</li>
+      <li>Engagements proceed only with approved scope and contractual documentation.</li>
+    </ul>
+  </section>
+</BaseLayout>

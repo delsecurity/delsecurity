@@ -1,0 +1,4 @@
+Contact: mailto:contact@del-sec.com
+Encryption: https://www.del-sec.com/pgp.txt
+Preferred-Languages: en
+Canonical: https://www.del-sec.com/.well-known/security.txt

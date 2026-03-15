@@ -1,0 +1,92 @@
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/manrope/400.css';
+@import '@fontsource/manrope/500.css';
+@import '@fontsource/manrope/600.css';
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Manrope', 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-text-soft: var(--text-soft);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-ok: var(--ok);
+}
+
+:root {
+  color-scheme: light;
+  --bg: #f3f6f8;
+  --surface: #ffffff;
+  --muted: #e7edf1;
+  --line: #d3dde4;
+  --text: #0e1d2b;
+  --text-soft: #3f5263;
+  --brand: #0a6c8d;
+  --brand-soft: #d7ecf4;
+  --ok: #186145;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #071018;
+  --surface: #0c1924;
+  --muted: #122536;
+  --line: #234058;
+  --text: #e8f0f6;
+  --text-soft: #9ab0c2;
+  --brand: #5fb3cf;
+  --brand-soft: #18313d;
+  --ok: #5ad0a0;
+}
+
+body {
+  @apply bg-bg text-text font-sans antialiased;
+  background-image:
+    radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--brand) 15%, transparent), transparent 26%),
+    radial-gradient(circle at 95% 10%, color-mix(in oklab, var(--brand) 8%, transparent), transparent 34%);
+  min-height: 100vh;
+}
+
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand;
+}
+
+.container-shell {
+  @apply mx-auto w-full max-w-6xl px-5 md:px-8;
+}
+
+.card {
+  @apply rounded-2xl border border-line bg-surface;
+}
+
+.prose-shell {
+  @apply text-text-soft leading-7;
+}
+
+.prose-shell h2,
+.prose-shell h3 {
+  @apply font-display text-text;
+}
+
+.prose-shell a {
+  @apply text-brand underline underline-offset-4;
+}
+
+.brand-logo-dark {
+  display: none;
+}
+
+html[data-theme='dark'] .brand-logo-light {
+  display: none;
+}
+
+html[data-theme='dark'] .brand-logo-dark {
+  display: block;
+}
