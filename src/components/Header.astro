@@ -1,0 +1,55 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { NAV_ITEMS, SITE, withBase } from '../config/site';
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => {
+  const resolved = withBase(href).replace(/\/$/, '');
+  const current = currentPath.replace(/\/$/, '');
+  return href === '/' ? current === resolved : current.startsWith(resolved);
+};
+---
+
+<header class="sticky top-0 z-20 border-b border-line/80 bg-bg/90 backdrop-blur">
+  <div class="container-shell flex flex-wrap items-center justify-between gap-4 py-4">
+    <a href={withBase('/')} class="inline-flex items-center" aria-label={SITE.name}>
+      <img
+        src={withBase('/brand/del_security_lockup_transparent_black.png')}
+        alt=""
+        class="brand-logo brand-logo-light h-6 w-auto md:h-7"
+        loading="eager"
+        decoding="async"
+      />
+      <img
+        src={withBase('/brand/del_security_lockup_transparent_white.png')}
+        alt=""
+        class="brand-logo brand-logo-dark h-6 w-auto md:h-7"
+        loading="eager"
+        decoding="async"
+      />
+      <span class="sr-only">{SITE.name}</span>
+    </a>
+    <nav aria-label="Primary" class="order-3 w-full md:order-2 md:w-auto">
+      <ul class="flex flex-wrap items-center gap-2 text-sm">
+        {NAV_ITEMS.map((item) => (
+          <li>
+            <a
+              href={withBase(item.href)}
+              class:list={[
+                'rounded-full px-3 py-1.5 transition',
+                isActive(item.href)
+                  ? 'bg-brand text-white'
+                  : 'text-text-soft hover:bg-muted hover:text-text',
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="order-2 md:order-3">
+      <ThemeToggle />
+    </div>
+  </div>
+</header>

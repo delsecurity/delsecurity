@@ -1,0 +1,16 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "4321:4321"
+    environment:
+      - SITE_URL=http://localhost:4321
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
