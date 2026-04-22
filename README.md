@@ -22,6 +22,24 @@ npm run build
 npm run preview
 ```
 
+## Run with Docker (for browser preview)
+
+```bash
+docker compose up --build
+```
+
+Then open:
+
+```text
+http://localhost:4321
+```
+
+To stop:
+
+```bash
+docker compose down
+```
+
 ## Routes
 
 - `/` Home

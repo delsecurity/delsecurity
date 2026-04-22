@@ -67,16 +67,129 @@ body {
 }
 
 .prose-shell {
-  @apply text-text-soft leading-7;
+  @apply text-text-soft leading-8;
+}
+
+.prose-shell > * + * {
+  margin-top: 1.25rem;
+}
+
+.prose-shell h1 {
+  font-family: var(--font-display, 'Space Grotesk', 'Segoe UI', sans-serif);
+  font-size: clamp(2rem, 4vw, 2.4rem);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.prose-shell h2 {
+  font-family: var(--font-display, 'Space Grotesk', 'Segoe UI', sans-serif);
+  font-size: clamp(1.55rem, 2vw, 1.95rem);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--text);
+  border-left: 4px solid var(--brand);
+  padding-left: 0.9rem;
+}
+
+.prose-shell h3 {
+  font-family: var(--font-display, 'Space Grotesk', 'Segoe UI', sans-serif);
+  font-size: clamp(1.4rem, 1.75vw, 1.7rem);
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.prose-shell h4 {
+  font-family: var(--font-display, 'Space Grotesk', 'Segoe UI', sans-serif);
+  font-size: clamp(1.2rem, 2vw, 1.35rem);
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.prose-shell h5 {
+  font-family: var(--font-display, 'Space Grotesk', 'Segoe UI', sans-serif);
+  font-size: clamp(1.05rem, 1.75vw, 1.15rem);
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.prose-shell h6 {
+  font-family: var(--font-display, 'Space Grotesk', 'Segoe UI', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--text);
 }
 
 .prose-shell h2,
 .prose-shell h3 {
-  @apply font-display text-text;
+  margin-top: 2rem;
+}
+
+.prose-shell p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.prose-shell hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  opacity: 0.5;
+}
+
+.prose-shell ul,
+.prose-shell ol {
+  @apply pl-6;
+}
+
+.prose-shell li {
+  @apply mb-2;
 }
 
 .prose-shell a {
   @apply text-brand underline underline-offset-4;
+}
+
+.prose-shell strong {
+  @apply text-text;
+}
+
+.prose-shell code {
+  @apply rounded-md bg-muted px-1.5 py-0.5 text-sm text-text;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+.prose-shell pre {
+  @apply overflow-x-auto rounded-xl border border-line bg-[var(--muted)] p-4;
+}
+
+.prose-shell pre code {
+  @apply p-0 bg-transparent;
+}
+
+.prose-shell blockquote {
+  @apply border-l-4 border-brand-soft px-4 py-2 text-text;
+}
+
+.prose-shell table {
+  @apply w-full border-collapse;
+}
+
+.prose-shell thead {
+  @apply border-b border-line;
+}
+
+.prose-shell th,
+.prose-shell td {
+  @apply border-b border-line px-3 py-2 align-top;
+}
+
+.prose-shell th {
+  @apply text-left font-display text-sm text-text;
 }
 
 .brand-logo-dark {

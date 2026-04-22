@@ -45,21 +45,24 @@ const articleJsonLd = {
 
 <BaseLayout title={post.data.title} description={post.data.summary} canonicalPath={canonicalPath}>
   <article class="mx-auto max-w-3xl">
-    <header class="mb-8 border-b border-line pb-6">
-      <p class="text-xs font-semibold uppercase tracking-wide text-brand">Article</p>
-      <h1 class="mt-3 font-display text-4xl font-bold leading-tight">{post.data.title}</h1>
-      <div class="mt-4 flex flex-wrap gap-3 text-xs text-text-soft">
+    <header class="card p-6 md:p-8 mb-8 border-l-4 border-brand">
+      <p class="text-xs font-semibold uppercase tracking-wide text-brand">Security Research</p>
+      <h1 class="mt-3 font-display text-4xl font-bold leading-tight text-text">{post.data.title}</h1>
+      <p class="mt-4 text-base leading-7 text-text-soft">{post.data.summary}</p>
+      <div class="mt-5 flex flex-wrap items-center gap-3 text-xs text-text-soft">
         <time datetime={post.data.date}
           >{new Date(post.data.date).toLocaleDateString('en-US', { dateStyle: 'medium' })}</time
         >
-        <span>{readingTime}</span>
+        <span class="inline-flex items-center rounded-full border border-line px-2 py-0.5">{readingTime}</span>
       </div>
-      <div class="mt-4 flex flex-wrap gap-2 text-xs text-brand">
-        {post.data.tags.map((tag) => <span>#{tag}</span>)}
+      <div class="mt-4 flex flex-wrap gap-2 text-xs">
+        {post.data.tags.map((tag) => (
+          <span class="rounded-full border border-line px-2 py-0.5 text-text-soft">#{tag}</span>
+        ))}
       </div>
     </header>
 
-    <div class="prose-shell prose prose-zinc max-w-none dark:prose-invert">
+    <div class="card p-6 md:p-8 prose-shell">
       <Content />
     </div>
 
