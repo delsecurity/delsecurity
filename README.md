@@ -22,22 +22,6 @@ npm run build
 npm run preview
 ```
 
-## Run with Docker
-
-```bash
-docker compose up -d --build
-```
-
-Then open `http://localhost:8080`.
-
-Development mode:
-
-```bash
-docker compose -f docker-compose.dev.yml up -d --build
-```
-
-Then open `http://localhost:4321`.
-
 ## Routes
 
 - `/` Home
