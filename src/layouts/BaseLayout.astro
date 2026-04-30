@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { title, description = SITE.description, canonicalPath, noindex = false } = Astro.props;
-const ga4Id = import.meta.env.PUBLIC_GA4_ID ?? 'G-C4VM0D063Y';
+const ga4Id = import.meta.env.PUBLIC_GA4_ID || 'G-C4VM0D063Y';
 const ga4BootstrapScript = ga4Id
   ? `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ${JSON.stringify(ga4Id)});`
   : '';
